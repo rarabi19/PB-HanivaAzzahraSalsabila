@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "164629043506",
+    "firebase_url": "https://mymobile-56761-default-rtdb.firebaseio.com",
+    "project_id": "mymobile-56761",
+    "storage_bucket": "mymobile-56761.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164629043506:android:4de27c1834cfa49f7edf2b",
+        "android_client_info": {
+          "package_name": "com.example.myapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164629043506-ekjgvme1va83572hp0jvb9tnuddb3kql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4KTDhASb0GOcUbJrwpCYzXhUFJnfm9Uo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164629043506-ekjgvme1va83572hp0jvb9tnuddb3kql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

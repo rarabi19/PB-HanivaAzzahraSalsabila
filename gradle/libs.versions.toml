@@ -1,0 +1,63 @@
+[versions]
+# Android Gradle Plugin & Google Services
+agp = "8.8.2"
+googleGmsGoogleServices = "4.4.2"
+
+# Firebase & Google
+firebaseAuth = "23.2.0"
+firebaseDatabase = "21.0.0"
+playServicesAuth = "21.1.0"
+
+# AndroidX & Material
+appcompat = "1.7.0"
+material = "1.12.0"
+constraintlayout = "2.2.1"
+navigationFragment = "2.8.9"
+navigationUi = "2.8.9"
+activity = "1.8.2"
+
+# AndroidX Credentials API (optional)
+credentials = "1.5.0-rc01"
+credentialsPlayServicesAuth = "1.3.0"
+
+# Testing
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+googleid = "1.1.1"
+navigationFragmentVersion = "2.8.9"
+navigationUiVersion = "2.8.9"
+
+[libraries]
+# AndroidX & Material Design
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+activity = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+
+# Navigation Component
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUi" }
+
+# Firebase
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+
+# Google Sign-In
+googleid = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+
+# AndroidX Credentials API
+credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
+credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+google-googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragmentVersion" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUiVersion" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }

@@ -25,8 +25,29 @@
             </intent-filter>
         </activity>
 
+
         <activity
-            android:name=".MainActivity"
+            android:name=".AlquranActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".AsmaActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".DoaActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".JadwalActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".KalenderActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".KiblatActivity"
             android:exported="true" />
 
         <!-- Tambahkan activity lain di sini jika ada -->

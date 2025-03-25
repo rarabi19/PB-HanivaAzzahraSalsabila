@@ -1,6 +1,9 @@
 package com.example.myapps;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,93 +18,118 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapps.Models.UserDetails;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.Firebase;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.core.Tag;
 
 public class MainActivity2 extends AppCompatActivity {
 
     Button signUpBtn;
-    TextInputEditText usernameSignUp, passwordSingUp, nimPengguna, emailPengguna;
+    TextInputEditText usernameSignUp, passwordSignUp, nimPengguna, emailPengguna;
     FirebaseAuth mAuth;
     private static final String TAG = "MainActivity2";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main2);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
+        // Inisialisasi Firebase
+        FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+
+        // Inisialisasi View
         signUpBtn = findViewById(R.id.signUpBtn);
         usernameSignUp = findViewById(R.id.usernameSignUp);
         emailPengguna = findViewById(R.id.emailPengguna);
-        passwordSingUp = findViewById(R.id.passwordSingUp);
+        passwordSignUp = findViewById(R.id.passwordSingUp);
         nimPengguna = findViewById(R.id.nimPengguna);
 
+        // Tombol Daftar
         signUpBtn.setOnClickListener(view -> {
-            String username, email, password, NIM;
+            String username = usernameSignUp.getText().toString().trim();
+            String email = emailPengguna.getText().toString().trim();
+            String password = passwordSignUp.getText().toString().trim();
+            String NIM = nimPengguna.getText().toString().trim();
 
-            username = String.valueOf(usernameSignUp.getText());
-            email = String.valueOf(emailPengguna.getText());
-            password = String.valueOf(passwordSingUp.getText());
-            NIM = String.valueOf(nimPengguna.getText());
-
-            if (TextUtils.isEmpty(username)){
-                Toast.makeText(MainActivity2.this, "Enter Username", Toast.LENGTH_LONG).show();
+            if (TextUtils.isEmpty(username)) {
+                usernameSignUp.setError("Masukkan Username");
                 usernameSignUp.requestFocus();
             } else if (TextUtils.isEmpty(email)) {
-                Toast.makeText(MainActivity2.this, "Enter email", Toast.LENGTH_LONG).show();
+                emailPengguna.setError("Masukkan Email");
                 emailPengguna.requestFocus();
             } else if (TextUtils.isEmpty(password)) {
-                Toast.makeText(MainActivity2.this, "Enter Password", Toast.LENGTH_LONG).show();
-                passwordSingUp.requestFocus();
+                passwordSignUp.setError("Masukkan Password");
+                passwordSignUp.requestFocus();
+            } else if (password.length() < 6) {
+                passwordSignUp.setError("Password minimal 6 karakter");
+                passwordSignUp.requestFocus();
             } else if (TextUtils.isEmpty(NIM)) {
-                Toast.makeText(MainActivity2.this,"Please Insert your NIM", Toast.LENGTH_LONG).show();
+                nimPengguna.setError("Masukkan NIM");
                 nimPengguna.requestFocus();
+            } else if (!isNetworkAvailable()) {
+                Toast.makeText(MainActivity2.this, "Tidak ada koneksi internet!", Toast.LENGTH_LONG).show();
             } else {
-                //methods public void
                 registerUser(username, email, password, NIM);
             }
         });
     }
 
-    private void registerUser(String username, String email,String password, String NIM) {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(MainActivity2.this, task -> {
+    private void registerUser(String username, String email, String password, String NIM) {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                FirebaseUser fUser = auth.getCurrentUser();
-                String uid = fUser.getUid();
+                FirebaseUser fUser = mAuth.getCurrentUser();
 
-                UserDetails userDetails = new UserDetails(uid, username, email, password, NIM);
+                if (fUser != null) {
+                    String uid = fUser.getUid();
+                    UserDetails userDetails = new UserDetails(uid, username, email, password, NIM);
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-                reference.child(fUser.getUid()).setValue(userDetails).addOnCompleteListener(task1 -> {
-                    if (task1.isSuccessful()){
-                        fUser.sendEmailVerification();
-                        Toast.makeText(MainActivity2.this, "Account created", Toast.LENGTH_LONG).show();
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                    reference.child(uid).setValue(userDetails).addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful()) {
+                            fUser.sendEmailVerification();
+                            Toast.makeText(MainActivity2.this, "Akun berhasil dibuat! Verifikasi email Anda.", Toast.LENGTH_LONG).show();
 
-                        //Pindah Page
-                        Intent intent = new Intent(MainActivity2.this, HomeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Toast.makeText(MainActivity2.this, "Account registerd failed", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "Register: Error");
-                    }
-                });
+                            // Pindah ke HomeActivity
+                            Intent intent = new Intent(MainActivity2.this, HomeActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Log.e(TAG, "Gagal menyimpan data ke database: ", task1.getException());
+                            Toast.makeText(MainActivity2.this, "Gagal menyimpan data, coba lagi.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Log.e(TAG, "FirebaseUser null setelah pendaftaran!");
+                    Toast.makeText(MainActivity2.this, "Pendaftaran gagal, coba lagi.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Exception exception = task.getException();
+                if (exception instanceof FirebaseAuthUserCollisionException) {
+                    Toast.makeText(MainActivity2.this, "Email sudah terdaftar!", Toast.LENGTH_LONG).show();
+                } else {
+                    Log.e(TAG, "Pendaftaran gagal: ", exception);
+                    Toast.makeText(MainActivity2.this, "Pendaftaran gagal: " + exception.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

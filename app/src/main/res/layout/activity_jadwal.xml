@@ -6,7 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".JadwalActivity"
     android:exported="true"
-    android:background="#0E403E">
+    android:background="@color/white"
+    android:padding="10dp">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_shalat2"/>
 
 </FrameLayout>

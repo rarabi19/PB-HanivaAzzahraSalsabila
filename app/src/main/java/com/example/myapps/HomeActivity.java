@@ -3,6 +3,8 @@ package com.example.myapps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -31,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         Button jadwalBtn = findViewById(R.id.jadwalBtn);
         Button kalenderBtn = findViewById(R.id.kalenderBtn);
         Button kiblatBtn = findViewById(R.id.kiblatBtn);
+        ImageView btnuser = findViewById(R.id.btnuser);
 
         // Set event klik untuk setiap tombol
         quranBtn.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, AlquranActivity.class)));
@@ -39,5 +42,6 @@ public class HomeActivity extends AppCompatActivity {
         jadwalBtn.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, JadwalActivity.class)));
         kalenderBtn.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, KalenderActivity.class)));
         kiblatBtn.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, KiblatActivity.class)));
-    }
+        btnuser.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, UserActivity.class)));
+        }
 }

@@ -7,254 +7,349 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E3735"
-    android:paddingTop="15dp"
     tools:context=".HomeActivity"
-    android:exported="true" >
+    android:padding="15dp">
 
-    <!-- Navbar / Judul di atas -->
-    <TextView
-        android:id="@+id/tvGreeting"
+    <!-- Header (Navbar) -->
+    <RelativeLayout
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="✨ Perbanyak Amal Menuju Surga ✨"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:fontFamily="serif"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_marginTop="15dp"
-        android:background="#0E3735"/>
+        android:background="#0E3735"
+        android:layout_alignParentTop="true">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tvGreeting"
-        android:padding="20dp"
-        android:backgroundTint="#0E403E">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-
-
-        <!-- Menu Grid -->
-        <androidx.gridlayout.widget.GridLayout
-            android:layout_width="match_parent"
+        <!-- Layout untuk Button Rata Kanan -->
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:alignmentMode="alignMargins"
-            app:columnCount="1"
-            app:rowOrderPreserved="false"
-            app:useDefaultMargins="true">
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp">
 
-            <!-- Card Al-Quran -->
-            <androidx.cardview.widget.CardView
+            <!-- Judul -->
+            <TextView
+                android:id="@+id/jJudul"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:paddingHorizontal="20dp"
+                android:text="INGAT DOSA, MARI BERAMAL"
+                android:textSize="15.5sp"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:textColor="#001211"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:background="#F7CABBA2"
+                android:radius="20dp"
+                android:layout_marginStart="6dp"/>
+
+            <!-- Icon Pengaturan -->
+            <ImageView
+                android:id="@+id/btnpengaturan"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_pengaturan"
+                android:scaleType="fitCenter"
+                android:contentDescription="Pengaturan"
+                android:layout_marginStart="4dp"/>
+
+            <!-- Icon User -->
+            <ImageView
+                android:id="@+id/btnuser"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_user"
+                android:scaleType="fitCenter"
+                android:contentDescription="User Profile"
+                android:layout_marginStart="4dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/garis"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@id/buttonLayout"
+            android:layout_marginTop="20dp"
+            android:background="@color/white" />
+
+    </RelativeLayout>
+
+
+    <!-- ScrollView untuk Konten -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#0E403E"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/headerLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:layout_columnWeight="1">
+                android:orientation="vertical"
+                android:gravity="center">
 
-                <LinearLayout
+                <!-- Menu Grid -->
+                <androidx.gridlayout.widget.GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp">
+                    app:alignmentMode="alignMargins"
+                    app:columnCount="1"
+                    app:rowOrderPreserved="false"
+                    app:useDefaultMargins="true">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:background="@drawable/ic_quran"/>
-
-                    <Button
-                        android:id="@+id/quranBtn"
-                        android:backgroundTint="#0E3735"
-                        android:layout_width="wrap_content"
+                    <!-- Card Al-Quran -->
+                    <androidx.cardview.widget.CardView
                         android:layout_height="wrap_content"
-                        android:text="Al-Quran"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:layout_marginTop="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:layout_columnWeight="1">
 
-            <!-- Card Doa Harian -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:layout_columnWeight="1">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:background="@drawable/ic_quran"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:background="@drawable/ic_doa"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="Baca Al-Quran dan Terjemahannya"
+                                android:gravity="center"
+                                android:fontFamily="serif"/>
 
-                    <Button
-                        android:id="@+id/doaBtn"
-                        android:backgroundTint="#0E3735"
-                        android:layout_width="wrap_content"
+                            <Button
+                                android:id="@+id/quranBtn"
+                                android:backgroundTint="#0E3735"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Al-Quran"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="serif"
+                                android:layout_marginTop="8dp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card Doa Harian -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Doa Harian"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:layout_marginTop="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:layout_columnWeight="1">
 
-            <!-- Card Asmaul Husna -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:layout_columnWeight="1">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:background="@drawable/ic_doa"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:background="@drawable/ic_names"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="Kumpulan Doa Harian, Demi mendekatkan diri Kepada Sang Ilahi"
+                                android:gravity="center"
+                                android:fontFamily="serif"/>
 
-                    <Button
-                        android:id="@+id/asmaBtn"
-                        android:backgroundTint="#0E3735"
-                        android:layout_width="wrap_content"
+                            <Button
+                                android:id="@+id/doaBtn"
+                                android:backgroundTint="#0E3735"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Doa Harian"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="serif"
+                                android:layout_marginTop="8dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card Asmaul Husna -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Asmaul Husna"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="serif"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:layout_columnWeight="1">
 
-            <!-- Card Jadwal Sholat -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:layout_columnWeight="1">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:background="@drawable/ic_names"/>
 
-                    <ImageView
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
-                        android:background="@drawable/ic_prayer"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="Nama-nama Baik Allah Yang Wajib Kamu Ketahui"
+                                android:gravity="center"
+                                android:fontFamily="serif"/>
 
-                    <Button
-                        android:id="@+id/jadwalBtn"
-                        android:backgroundTint="#0E3735"
-                        android:layout_width="wrap_content"
+                            <Button
+                                android:id="@+id/asmaBtn"
+                                android:backgroundTint="#0E3735"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Asmaul Husna"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="serif"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card Jadwal Sholat -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Jadwal Sholat"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:layout_marginTop="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:layout_columnWeight="1">
 
-            <!-- Card Kalender Hijriyah -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:layout_columnWeight="1">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp">
+                            <ImageView
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"
+                                android:background="@drawable/ic_prayer"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:background="@drawable/ic_calendar" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="Sudah Shalatkah Kamu Hari Ini ???"
+                                android:gravity="center"
+                                android:fontFamily="serif"/>
 
-                    <Button
-                        android:id="@+id/kalenderBtn"
-                        android:backgroundTint="#0E3735"
-                        android:layout_width="wrap_content"
+                            <Button
+                                android:id="@+id/jadwalBtn"
+                                android:backgroundTint="#0E3735"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Jadwal Sholat"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="serif"
+                                android:layout_marginTop="8dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card Kalender Hijriyah -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Kalender Hijriyah"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:layout_marginTop="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:layout_columnWeight="1">
 
-            <!-- Card Arah Kiblat -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:layout_columnWeight="1">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:background="@drawable/ic_calendar" />
 
-                    <ImageView
-                        android:layout_width="170dp"
-                        android:layout_height="170dp"
-                        android:background="@drawable/ic_compass" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="Mengenal Bulan-Bulan Islam"
+                                android:gravity="center"
+                                android:fontFamily="serif"/>
 
-                    <Button
-                        android:id="@+id/kiblatBtn"
-                        android:backgroundTint="#0E3735"
-                        android:layout_width="wrap_content"
+                            <Button
+                                android:id="@+id/kalenderBtn"
+                                android:backgroundTint="#0E3735"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Kalender Hijriyah"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="serif"
+                                android:layout_marginTop="8dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card Arah Kiblat -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Arah Kiblat"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:layout_marginTop="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:layout_columnWeight="1">
 
-        </androidx.gridlayout.widget.GridLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
 
-    </LinearLayout>
+                            <ImageView
+                                android:layout_width="170dp"
+                                android:layout_height="170dp"
+                                android:background="@drawable/ic_compass" />
 
-</androidx.core.widget.NestedScrollView>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="Temukan Arah Kiblatmu Secara Mudah"
+                                android:gravity="center"
+                                android:fontFamily="serif"/>
+
+                            <Button
+                                android:id="@+id/kiblatBtn"
+                                android:backgroundTint="#0E3735"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Arah Kiblat"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="serif"
+                                android:layout_marginTop="8dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.gridlayout.widget.GridLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
 </RelativeLayout>
+
+

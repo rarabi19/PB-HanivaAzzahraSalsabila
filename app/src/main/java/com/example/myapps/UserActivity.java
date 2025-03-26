@@ -5,43 +5,72 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapps.Models.ViewProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class UserActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
-    private ImageButton imgProfile, btnHome;
+    private ImageButton imgProfile;
+    private ImageView btnHome, btnSettings, btnUser;
     private Button btnLogout;
+    private TextView tvUsername, tvEmail, tvNIM, tvTitle, tvHelo;
     private Uri profileImageUri;
+    private DatabaseReference userRef;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        imgProfile = findViewById(R.id.imgProfile);
-        btnHome = findViewById(R.id.btnHome);
-        btnLogout = findViewById(R.id.btnLogout);
+        // Inisialisasi Firebase Auth
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        // Pastikan pengguna telah login
+        if (currentUser == null) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+            return;
+        }
+
+        // Inisialisasi View
+        imgProfile = findViewById(R.id.imgProfile);
+        btnHome = findViewById(R.id.btnhome);
+        btnSettings = findViewById(R.id.btnpengaturan);
+        btnUser = findViewById(R.id.btnuser);
+        btnLogout = findViewById(R.id.btnLogout);
+        tvUsername = findViewById(R.id.tvUsername);
+        tvEmail = findViewById(R.id.tvEmail);
+        tvNIM = findViewById(R.id.tvNIM);
+        tvTitle = findViewById(R.id.tvTitle);
+        tvHelo = findViewById(R.id.tvhelo); // Pastikan sesuai dengan XML
+
+        // Ambil data pengguna dari Firebase Database
+        userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
+
+        // Tombol Navigasi
         btnHome.setOnClickListener(v -> startActivity(new Intent(UserActivity.this, HomeActivity.class)));
+        btnSettings.setOnClickListener(v -> openSettings());
+        btnUser.setOnClickListener(v -> reloadUserData());  // Muat ulang data saat diklik
         imgProfile.setOnClickListener(this::showProfileMenu);
         btnLogout.setOnClickListener(view -> showLogoutDialog());
 
+        // Muat Data dari Firebase
         loadUserProfile();
     }
 
@@ -63,7 +92,6 @@ public class UserActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
-
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
@@ -82,7 +110,7 @@ public class UserActivity extends AppCompatActivity {
 
     private void viewProfile() {
         if (profileImageUri != null) {
-            Intent intent = new Intent(this, ViewProfileActivity.class);
+            Intent intent = new Intent(this, UserActivity.class);
             intent.putExtra("imageUri", profileImageUri.toString());
             startActivity(intent);
         } else {
@@ -91,24 +119,41 @@ public class UserActivity extends AppCompatActivity {
     }
 
     private void saveProfileImage(Uri imageUri) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
-            reference.child("profileImage").setValue(imageUri.toString());
-        }
+        userRef.child("profileImage").setValue(imageUri.toString());
     }
 
     private void loadUserProfile() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
-            reference.child("profileImage").get().addOnSuccessListener(snapshot -> {
-                if (snapshot.exists()) {
-                    profileImageUri = Uri.parse(snapshot.getValue(String.class));
-                    imgProfile.setImageURI(profileImageUri);
+        userRef.get().addOnSuccessListener(snapshot -> {
+            if (snapshot.exists()) {
+                // Ambil data dari database
+                String username = snapshot.child("username").getValue(String.class);
+                String email = snapshot.child("email").getValue(String.class);
+                String nim = snapshot.child("nim").getValue(String.class);
+                String imageUrl = snapshot.child("profileImage").getValue(String.class);
+
+                // Set data ke TextView
+                tvUsername.setText(username != null ? "Username : " + username : "Username : -");
+                tvEmail.setText(email != null ? "Email : " + email : "Email : -");
+                tvNIM.setText(nim != null ? "NIM : " + nim : "NIM : -");
+
+                // Menampilkan sapaan
+                tvHelo.setText(username != null ? "Hello, Selamat datang " + username + "...✨" : "Hello, Selamat datang...✨");
+
+                // Tampilkan foto profil jika ada
+                if (imageUrl != null) {
+                    Uri imageUri = Uri.parse(imageUrl);  // Parse URL menjadi URI
+                    imgProfile.setImageURI(imageUri);    // Set image URI langsung ke ImageView
                 }
-            });
-        }
+
+                // Set judul halaman
+                tvTitle.setText("User Profile");
+            }
+        }).addOnFailureListener(e -> Toast.makeText(this, "Gagal memuat data!", Toast.LENGTH_SHORT).show());
+    }
+
+    private void reloadUserData() {
+        Toast.makeText(this, "Memuat ulang data...", Toast.LENGTH_SHORT).show();
+        loadUserProfile();
     }
 
     private void showLogoutDialog() {
@@ -117,10 +162,14 @@ public class UserActivity extends AppCompatActivity {
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya", (dialog, which) -> {
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(UserActivity.this, MainActivity2.class));
+                    startActivity(new Intent(UserActivity.this, MainActivity.class));
                     finish();
                 })
                 .setNegativeButton("Batal", (dialog, which) -> dialog.dismiss())
                 .show();
+    }
+
+    private void openSettings() {
+        Toast.makeText(this, "Buka Pengaturan", Toast.LENGTH_SHORT).show();
     }
 }

@@ -34,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
         Button kalenderBtn = findViewById(R.id.kalenderBtn);
         Button kiblatBtn = findViewById(R.id.kiblatBtn);
         ImageView btnuser = findViewById(R.id.btnuser);
+        ImageView btnpengaturan = findViewById(R.id.btnpengaturan);
+        ImageView btnhome = findViewById(R.id.btnhome);
 
         // Set event klik untuk setiap tombol
         quranBtn.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, AlquranActivity.class)));
@@ -43,5 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         kalenderBtn.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, KalenderActivity.class)));
         kiblatBtn.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, KiblatActivity.class)));
         btnuser.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, UserActivity.class)));
+        btnpengaturan.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, PengaturanActivity.class)));
+        btnhome.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, HomeActivity.class)));
         }
 }

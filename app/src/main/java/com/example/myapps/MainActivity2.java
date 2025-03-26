@@ -7,7 +7,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,8 +29,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    Button signUpBtn;
+    Button signUpBtn, loginBtn;
     TextInputEditText usernameSignUp, passwordSignUp, nimPengguna, emailPengguna;
+    ProgressBar progressBar;
     FirebaseAuth mAuth;
     private static final String TAG = "MainActivity2";
 
@@ -51,12 +54,15 @@ public class MainActivity2 extends AppCompatActivity {
 
         // Inisialisasi View
         signUpBtn = findViewById(R.id.signUpBtn);
+        loginBtn = findViewById(R.id.loginBtn);
         usernameSignUp = findViewById(R.id.usernameSignUp);
         emailPengguna = findViewById(R.id.emailPengguna);
         passwordSignUp = findViewById(R.id.passwordSingUp);
         nimPengguna = findViewById(R.id.nimPengguna);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
-        // Tombol Daftar
+        // Tombol Sign Up
         signUpBtn.setOnClickListener(view -> {
             String username = usernameSignUp.getText().toString().trim();
             String email = emailPengguna.getText().toString().trim();
@@ -84,10 +90,23 @@ public class MainActivity2 extends AppCompatActivity {
                 registerUser(username, email, password, NIM);
             }
         });
+
+        // Tombol Login
+        loginBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity2.this, loginActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void registerUser(String username, String email, String password, String NIM) {
+        progressBar.setVisibility(View.VISIBLE);
+        signUpBtn.setEnabled(false);
+
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            progressBar.setVisibility(View.GONE);
+            signUpBtn.setEnabled(true);
+
             if (task.isSuccessful()) {
                 FirebaseUser fUser = mAuth.getCurrentUser();
 
@@ -101,8 +120,8 @@ public class MainActivity2 extends AppCompatActivity {
                             fUser.sendEmailVerification();
                             Toast.makeText(MainActivity2.this, "Akun berhasil dibuat! Verifikasi email Anda.", Toast.LENGTH_LONG).show();
 
-                            // Pindah ke HomeActivity
-                            Intent intent = new Intent(MainActivity2.this, HomeActivity.class);
+                            // Pindah ke LoginActivity setelah SignUp
+                            Intent intent = new Intent(MainActivity2.this, loginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             finish();

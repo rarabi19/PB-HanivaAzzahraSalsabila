@@ -1,0 +1,72 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0E3735"
+    android:padding="10dp">
+
+    <!-- Judul Navbar -->
+    <TextView
+        android:id="@+id/jJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:paddingHorizontal="10dp"
+        android:text="INGAT DOSA!!!, MARI PERBANYAK BERAMAL"
+        android:textSize="15.5sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:textColor="#001211"
+        android:background="#F7CABBA2"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_toStartOf="@id/buttonLayout"/>
+
+    <!-- Layout untuk Tombol Pengaturan dan User -->
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/btnpengaturan"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_pengaturan"
+            android:scaleType="centerInside"
+            android:contentDescription="Pengaturan"
+            android:layout_marginStart="5dp"/>
+
+        <ImageView
+            android:id="@+id/btnhome"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_home"
+            android:scaleType="centerInside"
+            android:contentDescription="Home"
+            android:layout_marginStart="5dp"/>
+
+        <ImageView
+
+            android:id="@+id/btnuser"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_user"
+            android:scaleType="centerInside"
+            android:contentDescription="User Profile"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+
+    <!-- Garis Bawah Navbar -->
+    <TextView
+        android:id="@+id/garis"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/jJudul"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"/>
+
+</RelativeLayout>

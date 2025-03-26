@@ -58,6 +58,14 @@
             android:name=".UserActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".PengaturanActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".loginActivity"
+            android:exported="true" />
+
         <!-- Tambahkan activity lain di sini jika ada -->
     </application>
 

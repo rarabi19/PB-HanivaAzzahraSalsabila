@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,82 +7,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E3735"
+    android:orientation="vertical"
     tools:context=".HomeActivity"
-    android:padding="15dp">
+    android:padding="5dp">
 
     <!-- Header (Navbar) -->
-    <RelativeLayout
-        android:id="@+id/headerLayout"
+    <include
+        layout="@layout/nav_bar"
+        android:id="@+id/navbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0E3735"
-        android:layout_alignParentTop="true">
-
-        <!-- Layout untuk Button Rata Kanan -->
-        <LinearLayout
-            android:id="@+id/buttonLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="15dp">
-
-            <!-- Judul -->
-            <TextView
-                android:id="@+id/jJudul"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:paddingHorizontal="20dp"
-                android:text="INGAT DOSA, MARI BERAMAL"
-                android:textSize="15.5sp"
-                android:textStyle="bold"
-                android:fontFamily="serif"
-                android:textColor="#001211"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:background="#F7CABBA2"
-                android:radius="20dp"
-                android:layout_marginStart="6dp"/>
-
-            <!-- Icon Pengaturan -->
-            <ImageView
-                android:id="@+id/btnpengaturan"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_pengaturan"
-                android:scaleType="fitCenter"
-                android:contentDescription="Pengaturan"
-                android:layout_marginStart="4dp"/>
-
-            <!-- Icon User -->
-            <ImageView
-                android:id="@+id/btnuser"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_user"
-                android:scaleType="fitCenter"
-                android:contentDescription="User Profile"
-                android:layout_marginStart="4dp"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/garis"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_below="@id/buttonLayout"
-            android:layout_marginTop="20dp"
-            android:background="@color/white" />
-
-    </RelativeLayout>
+        android:layout_alignParentTop="true"/>
 
 
     <!-- ScrollView untuk Konten -->
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#0E403E"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/headerLayout">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -350,6 +294,6 @@
 
         </androidx.core.widget.NestedScrollView>
 
-</RelativeLayout>
+</LinearLayout>
 
 

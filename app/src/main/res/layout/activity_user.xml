@@ -21,39 +21,21 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <!-- Tombol Home & Pengaturan -->
-            <LinearLayout
+
+            <!-- Header (Navbar) -->
+            <include
+                layout="@layout/nav_bar"
+                android:id="@+id/navbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="end"
-                android:padding="10dp">
+                android:layout_alignParentTop="true"/>
 
-                <ImageButton
-                    android:id="@+id/btnSettings"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_pengaturan"
-                    android:contentDescription="Pengaturan"
-                    android:layout_marginEnd="10dp"/>
-
-                <ImageButton
-                    android:id="@+id/btnHome"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_home"
-                    android:contentDescription="Home"/>
-            </LinearLayout>
 
             <!-- CardView untuk Profil User -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="6dp"
                 android:padding="20dp"
@@ -96,10 +78,23 @@
                         android:layout_marginBottom="10dp"/>
 
                     <TextView
+                        android:id="@+id/tvhelo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hello, Selamat datang pemburu Surga...✨"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
                         android:id="@+id/tvUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Username : xra"
+                        android:text="Username : "
                         android:textSize="14sp"
                         android:textColor="#000000"
                         android:padding="5dp"
@@ -110,7 +105,7 @@
                         android:id="@+id/tvEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Email         : 12350123200@students.uin-suska.ac.id"
+                        android:text="Email         : "
                         android:textSize="14sp"
                         android:textColor="#000000"
                         android:padding="5dp"
@@ -121,13 +116,13 @@
                         android:id="@+id/tvNIM"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NIM           : 12350123200"
+                        android:text="NIM           : "
                         android:textSize="14sp"
                         android:textColor="#000000"
                         android:padding="5dp"
                         android:textStyle="bold"
                         android:fontFamily="serif"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginBottom="10dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

@@ -13,6 +13,17 @@
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:layout_gravity="center"
-        android:background="@drawable/ic_kiblat2"/>
+        android:background="@drawable/ic_kiblat2"
+        android:layout_marginTop="45dp"/>
+
+
+    <!-- Header (Navbar) -->
+    <include
+        layout="@layout/nav_bar"
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
+
 
 </FrameLayout>

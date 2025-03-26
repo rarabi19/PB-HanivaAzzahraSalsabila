@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    tools:context=".NoteActivity"
+    android:padding="16dp"
+    android:background="#0E3735">
+
+    <!-- Header (Navbar) -->
+    <include
+        layout="@layout/nav_bar"
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <!-- Container Notes -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navbar"
+        android:background="#FFFFFF"
+        android:padding="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <LinearLayout
+            android:id="@+id/noteContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Sticky Notes Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Sticky Notes"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:textColor="#333333"
+                android:gravity="center"
+                android:paddingBottom="10dp"/>
+
+            <!-- Search Bar -->
+            <EditText
+                android:id="@+id/searchNote"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Cari catatan..."
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:fontFamily="serif"
+                android:textSize="16sp"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:drawablePadding="12dp"/>
+
+            <!-- Notes Akan Ditambahkan Secara Dinamis -->
+            <LinearLayout
+                android:id="@+id/dynamicNoteContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:layout_marginBottom="10dp">
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Floating Button untuk Menambahkan Notes di Dalam ScrollView -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="#FFFFFF"
+        android:backgroundTint="#F4A261"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_alignBottom="@id/scrollView"
+        android:layout_marginBottom="16dp"/>
+</RelativeLayout>

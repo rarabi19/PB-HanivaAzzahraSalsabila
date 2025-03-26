@@ -6,12 +6,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".KalenderActivity"
     android:exported="true"
-    android:background="#0E403E"
     android:padding="10dp">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_kalenderhijriah"/>
+
+
+    <!-- Header (Navbar) -->
+    <include
+        layout="@layout/nav_bar"
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
+
 
 </FrameLayout>

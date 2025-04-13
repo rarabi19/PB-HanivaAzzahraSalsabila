@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="226dp"
+    android:background="@drawable/edit_text4"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Memo"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
+
+    <TextView
+        android:id="@+id/txTanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Tanggal     : "
+        android:textColor="@color/white"
+        android:fontFamily="serif"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Label         : "
+        android:textColor="@color/white"
+        android:fontFamily="serif"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txNada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Nada          : "
+        android:textColor="@color/white"
+        android:fontFamily="serif"
+        android:textSize="16sp" />
+
+    <!--Pengingat/ Ulang Alarm-->
+    <TextView
+        android:id="@+id/txPengingat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:minHeight="48dp"
+        android:text="Ingatkan   :"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/btnHapusDate"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_text2"
+        android:gravity="center"
+        android:text="❌" />
+
+</LinearLayout>

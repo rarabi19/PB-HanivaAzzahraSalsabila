@@ -1,0 +1,16 @@
+package com.example.applicationdev;
+
+public class User {
+    public String nama;
+    public String email;
+
+
+    public User(String nama, String email, String nim, String jurusan, String universitas) {
+
+    }
+
+    public User(String nama, String email) {
+        this.nama = nama;
+        this.email = email;
+    }
+}

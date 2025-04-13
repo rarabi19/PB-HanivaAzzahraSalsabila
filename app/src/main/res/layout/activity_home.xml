@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_3"
+    android:padding="5dp"
+    tools:context=".Home"
+    tools:layout_editor_absoluteX="-1dp">
+
+        <!-- Navbar di kanan atas -->
+        <include
+            android:id="@+id/include_navbar"
+            layout="@layout/navbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/menuPanel"
+            android:layout_width="243dp"
+            android:layout_height="760dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/edit_text3"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.928"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+                <!-- Scrollable Card Menu -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80sp"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="HOME"
+                    android:textColor="@android:color/black"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="176dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#2E3355" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    android:overScrollMode="ifContentScrolls"
+                    android:scrollbars="vertical"
+                    tools:layout_editor_absoluteX="176dp"
+                    tools:layout_editor_absoluteY="403dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            tools:layout_editor_absoluteX="176dp"
+                            tools:layout_editor_absoluteY="403dp">
+
+                                <!-- CARD MENU 1 -->
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:layout_margin="12dp"
+                                    app:cardBackgroundColor="#A5091550"
+                                    app:cardCornerRadius="16dp"
+                                    tools:layout_editor_absoluteX="188dp"
+                                    tools:layout_editor_absoluteY="415dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical"
+                                            android:padding="15dp"
+                                            tools:layout_editor_absoluteX="188dp"
+                                            tools:layout_editor_absoluteY="559dp">
+
+                                                <ImageView
+                                                    android:layout_width="60dp"
+                                                    android:layout_height="60dp"
+                                                    android:background="@drawable/im_catatan"
+                                                    android:gravity="center" />
+
+                                                <com.google.android.material.button.MaterialButton
+                                                    android:id="@+id/bCatatan"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="48dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:fontFamily="serif"
+                                                    android:text="Catatan"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="15sp"
+                                                    android:textStyle="bold"
+                                                    app:backgroundTint="#FFFFFF"
+                                                    app:cornerRadius="10dp"
+                                                    app:strokeColor="#FFFFFF"
+                                                    tools:layout_editor_absoluteX="200dp"
+                                                    tools:layout_editor_absoluteY="469dp" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <!-- CARD MENU 2 -->
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:layout_margin="12dp"
+                                    app:cardBackgroundColor="#A5091550"
+                                    app:cardCornerRadius="16dp"
+                                    tools:layout_editor_absoluteX="188dp"
+                                    tools:layout_editor_absoluteY="559dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical"
+                                            android:padding="15dp"
+                                            tools:layout_editor_absoluteX="188dp"
+                                            tools:layout_editor_absoluteY="559dp">
+
+                                                <ImageView
+                                                    android:layout_width="60dp"
+                                                    android:layout_height="60dp"
+                                                    android:background="@drawable/im_alarm"
+                                                    android:gravity="center" />
+
+                                                <com.google.android.material.button.MaterialButton
+                                                    android:id="@+id/bAlarm"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="48dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:fontFamily="serif"
+                                                    android:text="Alarm"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="15sp"
+                                                    android:textStyle="bold"
+                                                    app:backgroundTint="#FFFFFF"
+                                                    app:cornerRadius="10dp"
+                                                    app:strokeColor="#FFFFFF"
+                                                    tools:layout_editor_absoluteX="200dp"
+                                                    tools:layout_editor_absoluteY="613dp" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <!-- CARD MENU 3 -->
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:layout_margin="12dp"
+                                    app:cardBackgroundColor="#A5091550"
+                                    app:cardCornerRadius="16dp"
+                                    tools:layout_editor_absoluteX="188dp"
+                                    tools:layout_editor_absoluteY="703dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical"
+                                            android:padding="15dp"
+                                            tools:layout_editor_absoluteX="188dp"
+                                            tools:layout_editor_absoluteY="559dp">
+
+                                                <ImageView
+                                                    android:layout_width="60dp"
+                                                    android:layout_height="60dp"
+                                                    android:background="@drawable/im_kalender"
+                                                    android:gravity="center" />
+
+                                                <com.google.android.material.button.MaterialButton
+                                                    android:id="@+id/bKalender"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="48dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:fontFamily="serif"
+                                                    android:text="Kalender"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="15sp"
+                                                    android:textStyle="bold"
+                                                    app:backgroundTint="#FFFFFF"
+                                                    app:cornerRadius="10dp"
+                                                    app:strokeColor="#FFFFFF"
+                                                    tools:layout_editor_absoluteX="200dp"
+                                                    tools:layout_editor_absoluteY="757dp" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <!-- CARD MENU 4 -->
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:layout_margin="12dp"
+                                    app:cardBackgroundColor="#A5091550"
+                                    app:cardCornerRadius="16dp"
+                                    tools:layout_editor_absoluteX="188dp"
+                                    tools:layout_editor_absoluteY="847dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical"
+                                            android:padding="15dp"
+                                            tools:layout_editor_absoluteX="188dp"
+                                            tools:layout_editor_absoluteY="559dp">
+
+                                                <ImageView
+                                                    android:layout_width="60dp"
+                                                    android:layout_height="60dp"
+                                                    android:background="@drawable/im_kegiatan"
+                                                    android:gravity="center" />
+
+                                                <com.google.android.material.button.MaterialButton
+                                                    android:id="@+id/bList"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="50dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:fontFamily="serif"
+                                                    android:text="To-do List"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="15sp"
+                                                    android:textStyle="bold"
+                                                    app:backgroundTint="#FFFFFF"
+                                                    app:cornerRadius="10dp"
+                                                    app:strokeColor="#FFFFFF"
+                                                    tools:layout_editor_absoluteX="200dp"
+                                                    tools:layout_editor_absoluteY="901dp" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <!-- CARD MENU 5 -->
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:layout_margin="12dp"
+                                    app:cardBackgroundColor="#A5091550"
+                                    app:cardCornerRadius="16dp"
+                                    tools:layout_editor_absoluteX="188dp"
+                                    tools:layout_editor_absoluteY="991dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical"
+                                            android:padding="15dp"
+                                            tools:layout_editor_absoluteX="188dp"
+                                            tools:layout_editor_absoluteY="559dp">
+
+                                                <ImageView
+                                                    android:layout_width="60dp"
+                                                    android:layout_height="60dp"
+                                                    android:background="@drawable/im_tabungan"
+                                                    android:gravity="center" />
+
+                                                <com.google.android.material.button.MaterialButton
+                                                    android:id="@+id/bTabungan"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="50dp"
+                                                    android:layout_marginTop="5dp"
+                                                    android:fontFamily="serif"
+                                                    android:text="Tabungan"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="15sp"
+                                                    android:textStyle="bold"
+                                                    app:backgroundTint="#FFFFFF"
+                                                    app:cornerRadius="10dp"
+                                                    app:strokeColor="#FFFFFF"
+                                                    tools:layout_editor_absoluteX="200dp"
+                                                    tools:layout_editor_absoluteY="1045dp" />
+                                        </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_8"
+    tools:context=".Alarm2">
+
+
+    <LinearLayout
+        android:id="@+id/menuPanel"
+        android:layout_width="375dp"
+        android:layout_height="689dp"
+        android:background="@drawable/edit_text3"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!--        Set Alarm Label-->
+        <TextView
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="21.5dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edit_text4"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="ALARAM"
+            android:textColor="@color/white"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+        <TimePicker
+            android:id="@+id/tpAlarm"
+            android:layout_width="330dp"
+            android:layout_height="210dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginTop="-26dp"
+            android:background="@drawable/edit_text5"
+            android:timePickerMode="spinner" />
+
+
+        <!-- Label Alarm-->
+        <TextView
+            android:id="@+id/txLabel"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/edit_text2"
+            android:fontFamily="serif"
+            android:gravity="fill_vertical"
+            android:text="     Label"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <!--Dering Alarm-->
+        <TextView
+            android:id="@+id/txDering"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/edit_text2"
+            android:fontFamily="serif"
+            android:gravity="fill_vertical"
+            android:text="     Nada Dering"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <!--Pengingat/ Ulang Alarm-->
+        <Switch
+            android:id="@+id/txPengingat"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/edit_text2"
+            android:fontFamily="serif"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="Ingatkan Saya Nanti"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!--     Button    -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bAlarm"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="serif"
+            android:text="Set Alarm"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#3B488C"
+            app:cornerRadius="10dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="3dp" />
+
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/navbar"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

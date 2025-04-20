@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    tools:context=".Kalender"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_5">
+
+    <!-- Navbar di kanan atas -->
+    <include
+        android:id="@+id/include_navbar"
+        layout="@layout/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Tetap tampil -->
+    <LinearLayout
+        android:id="@+id/menuPanel"
+        android:layout_width="399dp"
+        android:layout_height="798dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.256">
+
+        <!-- Panel utama -->
+
+
+        <TextView
+            android:id="@+id/tvJudulKalender"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:gravity="center"
+            android:text="KALENDER"
+            android:textColor="#685E31"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Hanya bagian isi Firebase -->
+
+                <CalendarView
+                    android:id="@+id/tpDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="320dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_gravity="center"
+                    android:calendarViewShown="true"
+                    android:focusedMonthDateColor="#584C3F"
+                    android:unfocusedMonthDateColor="#584C3F"
+                    android:weekNumberColor="#584C3F"
+                    android:weekSeparatorLineColor="#584C3F"
+                    android:selectedDateVerticalBar="@android:color/transparent"
+                    android:background="@drawable/edit_text7"/>
+
+                <LinearLayout
+                    android:id="@+id/listViewKalender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Button tambah tanggal -->
+        <ImageView
+            android:id="@+id/btntmbDate"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="end|bottom"
+            android:background="@android:color/transparent"
+            android:contentDescription="Tambah Tanggal"
+            android:src="@drawable/ic_plus" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

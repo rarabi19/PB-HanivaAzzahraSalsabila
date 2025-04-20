@@ -1,0 +1,53 @@
+<!-- res/layout/navbar.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#7A623B"
+    android:gravity="center"
+    tools:context=".Navbar">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="85dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent" />
+
+    <ImageView
+        android:id="@+id/bpengaturan"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:contentDescription="Pengaturan"
+        android:focusable="true"
+        android:gravity="center"
+        android:src="@drawable/ic_pengaturan"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/bhome"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:clickable="true"
+        android:contentDescription="Home Page"
+        android:focusable="true"
+        android:src="@drawable/ic_home"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/buser"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:clickable="true"
+        android:contentDescription="Profil"
+        android:focusable="true"
+        android:src="@drawable/ic_user"
+        tools:ignore="TouchTargetSizeCheck" />
+</LinearLayout>

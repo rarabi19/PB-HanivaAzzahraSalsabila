@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    tools:context=".SetelanKalender"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_5">
+
+    <!-- Navbar di kanan atas -->
+    <include
+        android:id="@+id/include_navbar"
+        layout="@layout/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/menuPanel"
+        android:layout_width="393dp"
+        android:layout_height="780dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.286">
+
+        <!-- Scrollable Card Menu -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="KALENDER"
+            android:textColor="#3D311D"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+
+        <!--        Set Kalender -->
+        <CalendarView
+            android:id="@+id/tpDate"
+            android:layout_width="360dp"
+            android:layout_height="325dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text3" />
+
+        <!-- Label Kalender-->
+        <TextView
+            android:id="@+id/txLabel"
+            android:layout_width="360dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edit_text3"
+            android:fontFamily="serif"
+            android:gravity="fill_vertical"
+            android:text="     Label"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <!--Dering Alarm-->
+        <TextView
+            android:id="@+id/txDering"
+            android:layout_width="360dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edit_text3"
+            android:fontFamily="serif"
+            android:gravity="fill_vertical"
+            android:text="     Nada Dering"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <!--Pengingat/ Ulang Alarm-->
+        <Switch
+            android:id="@+id/txPengingat"
+            android:layout_width="360dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text3"
+            android:fontFamily="serif"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="Ingatkan Saya Nanti"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <!--     Button    -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSetDate"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="serif"
+            android:text="Tandai Tanggal"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#7B633B"
+            app:cornerRadius="10dp"
+            app:strokeColor="#7F4B3E3E"
+            app:strokeWidth="3dp" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

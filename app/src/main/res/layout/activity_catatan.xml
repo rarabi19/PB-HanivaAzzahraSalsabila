@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Catatan"
+    android:background="@drawable/ic_5">
+
+    <!-- Navbar di kanan atas -->
+    <include
+        android:id="@+id/include_navbar"
+        layout="@layout/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/menuPanel"
+        android:layout_width="396dp"
+        android:layout_height="766dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100sp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:gravity="center"
+            android:text="CATATAN"
+            android:textColor="#5B532E"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+        <!-- EditText Search -->
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/cariFile"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="22dp"
+            android:background="#D1CEC2"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="fill"
+            android:padding="15dp"
+            android:hint="Cari catatan,.."
+            android:inputType="text"
+            android:textColor="#00050D"
+            android:textColorHint="#40321E" />
+
+        <!-- ScrollView untuk menampung catatan -->
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:contentDescription="Daftar catatan"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/notesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <!-- Tombol Tambah Catatan -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp">
+
+            <ImageView
+                android:id="@+id/btmbkegiatan"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="end"
+                android:layout_marginBottom="15dp"
+                android:contentDescription="Tambah catatan"
+                app:srcCompat="@drawable/ic_plus" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
